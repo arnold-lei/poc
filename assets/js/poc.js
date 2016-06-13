@@ -6,10 +6,10 @@
   //map options
   var options = mapster.MAP_DEFAULT_OPTIONS;
   //Setting the map to the div 
-  element = document.getElementById('map');
+  var element = document.getElementById('map');
   //creating the map object
-  var map = mapster.create(element, options);
-
+  // var map = mapster.create(element, options);
+  var map = new google.maps.Map(element, options)
 
   //creates markers on click
   map.addListener('click', function(e) {
@@ -37,19 +37,4 @@
     });
   });
 
-}(window, google, window.Mapster))
-
-
-
-// function initMap() {
-//   var map = new google.maps.Map(document.getElementById('map'), );
-
-
-
-// }
-
-
-
-
-
-// });)
+}(window, google, window.Mapster || (window.Mapster = {})))
