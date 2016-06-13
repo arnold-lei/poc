@@ -1,4 +1,5 @@
 (function(window, google, mapster){
+
   mapster.MAP_DEFAULT_OPTIONS = {
     center: {
       lat: 40, 
@@ -20,4 +21,5 @@
       style: google.maps.ZoomControlStyle.DEFAULT,
     }
   };
-}(window, google, window.Mapster || (window.Mapster = {})));
+
+}(window, google, window.Mapster))

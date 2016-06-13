@@ -8,8 +8,8 @@
   //Setting the map to the div 
   var element = document.getElementById('map');
   //creating the map object
-  // var map = mapster.create(element, options);
-  var map = new google.maps.Map(element, options)
+  var map = mapster.create(element, options);
+  // var map = new google.maps.Map(element, options);
 
   //creates markers on click
   map.addListener('click', function(e) {
@@ -37,4 +37,4 @@
     });
   });
 
-}(window, google, window.Mapster || (window.Mapster = {})))
+}(window, google, window.Mapster));
