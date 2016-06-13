@@ -1,3 +1,4 @@
+
 (function(window, google, mapster){
 
   mapster.MAP_DEFAULT_OPTIONS = {
@@ -21,5 +22,5 @@
       style: google.maps.ZoomControlStyle.DEFAULT,
     }
   };
-
-}(window, google, window.Mapster))
+console.log('someshit options');
+})(window, google, window.Mapster);
