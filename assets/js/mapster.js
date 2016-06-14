@@ -5,7 +5,16 @@
       this.gMap = new google.maps.Map(elements, options);
     }
     Mapster.prototype = {
-
+      zoom: function(level){
+        if(level){
+          this.gMap.setZoom(level);
+        }else {
+          return this.gMap.getZoom();
+        }
+      },
+      addListener: function(event, callback){
+        this.gMap.addListener(event, callback);      
+      }
     };
     return Mapster;
   }());
@@ -15,6 +24,5 @@
   };
 
   window.Mapster = Mapster;
-  console.log('someshit mapster');
 
 }(window, google));

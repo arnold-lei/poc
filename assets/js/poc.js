@@ -7,15 +7,17 @@
   //Setting the map to the div 
   var element = document.getElementById('map');
   //creating the map object
-  var map = mapster.create(element, options);
+  // var map = mapster.create(element, options);
   var map = new google.maps.Map(element, options);
 
-    //creates markers on click
+    // map._on('click', function(){console.log('click')});
+    // creates markers on click
     map.addListener('click', function(e) {
       var marker = new google.maps.Marker({
         position: {lat: e.latLng.lat(), lng: e.latLng.lng()},
-        map: map
+        map: map,
       });
+      marker.setMap(map);
       firebase.push({lat: e.latLng.lat(), lng: e.latLng.lng()});
     });
 
