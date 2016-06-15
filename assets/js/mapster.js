@@ -3,6 +3,7 @@
   var Mapster = (function(){
     function Mapster(elements, options){
       this.gMap = new google.maps.Map(elements, options);
+      this.markers = [];
     }
     Mapster.prototype = {
       zoom: function(level){
@@ -25,6 +26,7 @@
         var marker;
         opts.position = {lat: opts.lat, lng: opts.lng },
         marker = this._createMarker(opts);
+        this._addMarker(marker);
         if(opts.event){
           this._on({
             obj: marker,
@@ -46,6 +48,9 @@
           })
         }
         return marker;
+      },
+      _addMarker: function(marker){
+        this.markers.push(marker) 
       },
       _createMarker: function(opts){
         opts.map = this.gMap;
