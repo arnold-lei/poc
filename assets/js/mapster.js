@@ -52,6 +52,21 @@
       _addMarker: function(marker){
         this.markers.push(marker) 
       },
+      _removeMarker: function(marker){
+        var indexOf = this.markers.indexOf(marker);
+        if(indexOf !== -1) {
+          this.markers.splice(indexOf, 1);
+        }
+      },
+      findMarkerByLat: function(){
+        var i=0; 
+        for(; i < this.markers.length; i++){
+          var maker = this.marker[i];
+          if (marker.position.lat() == lat){
+            return marker
+          }
+        }
+      },
       _createMarker: function(opts){
         opts.map = this.gMap;
         return new google.maps.Marker(opts)

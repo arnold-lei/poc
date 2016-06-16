@@ -1,4 +1,4 @@
-(function(window, google, mapster){
+(function(window, google, mapster, $){
   //firebase connection 
   var firebase = new Firebase("https://arnoldleitestrcb.firebaseio.com/");
 
@@ -16,8 +16,37 @@
     // icon: 'https://lh6.googleusercontent.com/jKl8Ad4rBl499hBXFNh2k8lODStxrA9aLXuGMkSMNlRYuNG6ejUJ7rZ6l5rIMd5gIXiaAg=w1416-h658',
     content: 'Farmers Market',  
   });
-  
 
+  function getResults(zip) {
+      // or
+      // function getResults(lat, lng) {
+      $.ajax({
+          type: "GET",
+          contentType: "application/json; charset=utf-8",
+          // submit a get request to the restful service zipSearch or locSearch.
+          url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/zipSearch?zip=" + zip,
+          // or
+          // url: "http://search.ams.usda.gov/farmersmarkets/v1/data.svc/locSearch?lat=" + lat + "&lng=" + lng,
+          dataType: 'jsonp',
+          jsonpCallback: 'searchResultsHandler'
+      }).done(function(e){
+        for (var key in e) {
+        console.log(e[key]);
+        var results = e[key];
+        for (var i = 0; i < results.length; i++) {
+            var result = results[i];
+            for (var key in result) {
+                //only do an alert on the first search result
+                if (i == 0) {
+                    console.log(result[key]);
+                }
+            }
+        }
+    }
+      });
+  }  
+
+  getResults(22203);
 
 
     // map._on('click', function(){console.log('click')});
@@ -50,5 +79,4 @@
         content: 'From FireBase! Farmers Market',
       });
     });
-    console.log(map.markers);
-}(window, google, window.Mapster));
+}(window, google, window.Mapster, $));
